@@ -1,0 +1,479 @@
+<html>
+<head>
+<style>
+.marker{background-color :pink;}
+#addNew
+{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin-top: 1000px;
+    top: 0px;
+    background: rgba(0,0,0,.7);
+    transition: 1s;
+}
+
+  #clockWrapper{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 150px;
+	background-color :yellow;
+  }
+  #clockWrapper1, #clockWrapper2,#clockWrapper3,#clockWrapper4,#clockWrapper5{
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 150px;
+	background-color :yellow;
+	display: none;
+  }
+  .nums1, .nums2, .nums3, .nums4, .nums5
+  {
+    position: absolute;
+    margin-top: 145px;
+    width: 290px;
+    text-align: right;
+  }
+  .nums
+  {
+    position: absolute;
+    top: 150px;
+    width: 290px;
+    text-align: right;
+  }
+  #n1{
+    transform: rotate(-60deg);
+  }
+  #n2{
+    transform: rotate(-30deg);
+  }
+  #n3{
+    transform: rotate(0deg);
+  }
+  #n4{
+    transform: rotate(30deg);
+  }
+  #n5{
+    transform: rotate(60deg);
+  }
+  #n6{
+    transform: rotate(90deg);
+  }
+  #n7{
+    transform: rotate(120deg);
+  }
+  #n8{
+    transform: rotate(150deg);
+  }
+  #n9{
+    transform: rotate(180deg);
+  }
+  #n10{
+    transform: rotate(210deg);
+  }
+  #n11{
+    transform: rotate(240deg);
+  }
+  #n12{
+    transform: rotate(270deg);
+  }
+  .needle
+  {
+     margin-top: 150px;
+     position: absolute;
+     width: 300px;
+     line-height: 0px;
+  }
+  .needle span
+  {
+      display: block;
+      width: auto;
+      margin-left: 140px;
+     text-align: left;
+  }
+  #hour span{
+    background-color: red;
+    max-width: 100px;
+    height: 2px;
+  }
+  #hour1 span{
+    background-color: red;
+    max-width: 100px;
+    height: 2px;
+  }
+  #min span{
+    background-color: blue;
+    max-width: 120px;
+    height: 2px;
+  }
+  #secs span{
+    background-color: black;
+    max-width: 135px;
+    height: 1px;
+  }
+  #min1 span{
+    background-color: blue;
+    max-width: 120px;
+    height: 2px;
+ 
+  }
+  #secs1 span{
+    background-color: black;
+    max-width: 135px;
+    height: 1px;}
+    #hour2 span{
+      background-color: red;
+      max-width: 100px;
+      height: 2px;
+    }
+    #min2 span{
+      background-color: blue;
+      max-width: 120px;
+      height: 2px;
+    }
+    #secs2 span{
+      background-color: black;
+      max-width: 135px;
+      height: 1px;
+    }#hour3 span{
+    background-color: red;
+    max-width: 100px;
+    height: 2px;
+  }
+  #min3 span{
+    background-color: blue;
+    max-width: 120px;
+    height: 2px;
+  }
+  #secs3 span{
+    background-color: black;
+    max-width: 135px;
+    height: 1px;
+  }#hour4 span{
+    background-color: red;
+    max-width: 100px;
+    height: 2px;
+  }
+  #min4 span{
+    background-color: blue;
+    max-width: 120px;
+    height: 2px;
+  }
+  #secs4 span{
+    background-color: black;
+    max-width: 135px;
+    height: 1px;
+  }#hour5 span{
+    background-color: red;
+    max-width: 100px;
+    height: 2px;
+  }
+  #min5 span{
+    background-color: blue;
+    max-width: 120px;
+    height: 2px;
+  }
+  #secs5 span{
+    background-color: black;
+    max-width: 135px;
+    height: 1px;
+  }
+  }
+</style>
+<script src= "jquery-1.11.3.min.js"></script>
+<script>
+  function updateClock(date)
+  {
+	  //23 change clock 1 2 3 etc..
+    date = date || new Date();
+    var h = date.getHours() % 12;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var hdeg = (h - 3)*30;
+    var mdeg = (m - 15)*6;
+    var sdeg = (s - 15)*6;
+    document.getElementById("hour").style.transform = "rotate(" + hdeg + "deg)";
+    document.getElementById("min").style.transform = "rotate(" + mdeg + "deg)";
+    document.getElementById("secs").style.transform = "rotate(" + sdeg + "deg)";
+  }
+  function updateClock1(date)
+  {
+	  //23 change clock 1 2 3 etc..
+    date = date || new Date();
+    var h = date.getHours() % 12;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var hdeg = (h - 3)*30 + 30;
+    var mdeg = (m - 15)*6;
+    var sdeg = (s - 15)*6;
+	//hour 1 2 3 etc..
+	//console.log(sdeg);
+    document.getElementById("hour1").style.transform = "rotate(" + hdeg + "deg)";
+	document.getElementById("secs1").style.transform = "rotate(" + sdeg + "deg)";
+    document.getElementById("min1").style.transform = "rotate(" + mdeg + "deg)";
+    
+	
+  }
+  function updateClock2(date)
+  {
+	  //23 change clock 1 2 3 etc..
+    date = date || new Date();
+    var h = date.getHours() % 12;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var hdeg = (h - 3)*30 + 60;
+    var mdeg = (m - 15)*6;
+    var sdeg = (s - 15)*6;
+	//hour 1 2 3 etc..
+    document.getElementById("hour2").style.transform = "rotate(" + hdeg + "deg)";
+    document.getElementById("min2").style.transform = "rotate(" + mdeg + "deg)";
+    document.getElementById("secs2").style.transform = "rotate(" + sdeg + "deg)";
+  }function updateClock3(date)
+  {
+	  //23 change clock 1 2 3 etc..
+    date = date || new Date();
+    var h = date.getHours() % 12;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var hdeg = (h - 3)*30 + 90;
+    var mdeg = (m - 15)*6;
+    var sdeg = (s - 15)*6;
+	//hour 1 2 3 etc..
+    document.getElementById("hour3").style.transform = "rotate(" + hdeg + "deg)";
+    document.getElementById("min3").style.transform = "rotate(" + mdeg + "deg)";
+    document.getElementById("secs3").style.transform = "rotate(" + sdeg + "deg)";
+  }function updateClock4(date)
+  {
+	  //23 change clock 1 2 3 etc..
+    date = date || new Date();
+    var h = date.getHours() % 12;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var hdeg = (h - 3)*30 + 120;
+    var mdeg = (m - 15)*6;
+    var sdeg = (s - 15)*6;
+	//hour 1 2 3 etc..
+    document.getElementById("hour4").style.transform = "rotate(" + hdeg + "deg)";
+    document.getElementById("min4").style.transform = "rotate(" + mdeg + "deg)";
+    document.getElementById("secs4").style.transform = "rotate(" + sdeg + "deg)";
+  }function updateClock5(date)
+  {
+	  //23 change clock 1 2 3 etc..
+    date = date || new Date();
+    var h = date.getHours() % 12;
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var hdeg = (h - 3)*30 + 150;
+    var mdeg = (m - 15)*6;
+    var sdeg = (s - 15)*6;
+	//hour 1 2 3 etc..
+    document.getElementById("hour5").style.transform = "rotate(" + hdeg + "deg)";
+    document.getElementById("min5").style.transform = "rotate(" + mdeg + "deg)";
+    document.getElementById("secs5").style.transform = "rotate(" + sdeg + "deg)";
+  }
+
+  function startUp()
+  {
+    generateMyTimeZoneList();
+    setInterval("updateClock(null)", 1000);
+	setInterval("updateClock1(null)", 1000);
+	setInterval("updateClock2(null)", 1000);
+	setInterval("updateClock3(null)", 1000);
+	setInterval("updateClock4(null)", 1000);
+	setInterval("updateClock5(null)", 1000);
+	//23 ^set...change clock 1,2..etc..
+  }
+
+  function cancelTimeZone()
+  {
+    document.getElementById("addNew").style.marginTop = "1000px";
+    setTimeout(addNewTZ_Aux1, 1000);
+  }
+
+  function addNewTZ()
+  {
+    document.getElementById("addNew").style.display = "block";
+    setTimeout(addNewTZ_Aux, 0);
+  }
+
+  function addNewTZ_Aux(){
+    document.getElementById("addNew").style.marginTop = "0px";
+  }
+
+  function addNewTZ_Aux1(){
+    document.getElementById("addNew").style.display = "none";
+  }
+
+  function generateMyTimeZoneList(){
+    var outS = "";
+
+    outS += "<a href='javascript:TZSelected(-1)'> Current Location </a><br>";
+
+    // generate markup
+
+    outS += "<a href='javascript:addNewTZ()'>+ New </a>";
+
+
+    document.getElementById("placeList").innerHTML = outS;
+  
+  }
+
+  function TZSelected(a)
+  {
+    if(a == -1){
+      updateClock(null);
+    }
+  }
+  function addTimeZone(){
+	  var a = document.getElementById("timeZones").value;
+	  console.log(a);
+	  switch(a){
+	  case "-6:00":
+		  document.getElementById("clockWrapper1").style.display = "block";
+		  break;
+	  case "-5:00":
+		  document.getElementById("clockWrapper2").style.display = "block";
+		  break;
+	  case "-4:00":
+		  document.getElementById("clockWrapper3").style.display = "block";
+	  		break;
+	  case "-3:00":
+		  document.getElementById("clockWrapper4").style.display = "block";
+		  break;
+	  case "-2:00":
+		  document.getElementById("clockWrapper5").style.display = "block";
+		  break;
+	  }
+}
+var myTimeZones = [];  
+
+</script>
+</head>
+
+<body onload='startUp()'class="marker">
+  <div id='clockWrapper'>
+    <div class='nums' id='n1'> - </div>
+    <div class='nums' id='n2'> - </div>
+    <div class='nums' id='n3'> = </div>
+    <div class='nums' id='n4'> - </div>
+    <div class='nums' id='n5'> - </div>
+    <div class='nums' id='n6'> = </div>
+    <div class='nums' id='n7'> - </div>
+    <div class='nums' id='n8'> - </div>
+    <div class='nums' id='n9'> = </div>
+    <div class='nums' id='n10'> - </div>
+    <div class='nums' id='n11'> - </div>
+    <div class='nums' id='n12'> = </div>
+
+    <div class='needle' id='hour'></span> <span> </div>
+    <div  class='needle' id='min'><span> </span> </div>
+    <div  class='needle' id='secs'><span> </span></div>
+  </div>
+  <div id='clockWrapper1'>
+    <div class='nums1' id='n1'> - </div>
+    <div class='nums1' id='n2'> - </div>
+    <div class='nums1' id='n3'> = </div>
+    <div class='nums1' id='n4'> - </div>
+    <div class='nums1' id='n5'> - </div>
+    <div class='nums1' id='n6'> = </div>
+    <div class='nums1' id='n7'> - </div>
+    <div class='nums1' id='n8'> - </div>
+    <div class='nums1' id='n9'> = </div>
+    <div class='nums1' id='n10'> - </div>
+    <div class='nums1' id='n11'> - </div>
+    <div class='nums1' id='n12'> = </div>
+
+    <div class='needle' id='hour1'></span> <span> </div>
+    <div  class='needle' id='min1'><span> </span> </div>
+    <div  class='needle' id='secs1'><span> </span></div>
+  </div>
+  <div id='clockWrapper2'>
+    <div class='nums2' id='n1'> - </div>
+    <div class='nums2' id='n2'> - </div>
+    <div class='nums2' id='n3'> = </div>
+    <div class='nums2' id='n4'> - </div>
+    <div class='nums2' id='n5'> - </div>
+    <div class='nums2' id='n6'> = </div>
+    <div class='nums2' id='n7'> - </div>
+    <div class='nums2' id='n8'> - </div>
+    <div class='nums2' id='n9'> = </div>
+    <div class='nums2' id='n10'> - </div>
+    <div class='nums2' id='n11'> - </div>
+    <div class='nums2' id='n12'> = </div>
+
+    <div class='needle' id='hour2'></span> <span> </div>
+    <div  class='needle' id='min2'><span> </span> </div>
+    <div  class='needle' id='secs2'><span> </span></div>
+  </div><div id='clockWrapper3'>
+    <div class='nums3' id='n1'> - </div>
+    <div class='nums3' id='n2'> - </div>
+    <div class='nums3' id='n3'> = </div>
+    <div class='nums3' id='n4'> - </div>
+    <div class='nums3' id='n5'> - </div>
+    <div class='nums3' id='n6'> = </div>
+    <div class='nums3' id='n7'> - </div>
+    <div class='nums3' id='n8'> - </div>
+    <div class='nums3' id='n9'> = </div>
+    <div class='nums3' id='n10'> - </div>
+    <div class='nums3' id='n11'> - </div>
+    <div class='nums3' id='n12'> = </div>
+
+    <div class='needle' id='hour3'></span> <span> </div>
+    <div  class='needle' id='min3'><span> </span> </div>
+    <div  class='needle' id='secs3'><span> </span></div>
+  </div><div id='clockWrapper4'>
+    <div class='nums4' id='n1'> - </div>
+    <div class='nums4' id='n2'> - </div>
+    <div class='nums4' id='n3'> = </div>
+    <div class='nums4' id='n4'> - </div>
+    <div class='nums4' id='n5'> - </div>
+    <div class='nums4' id='n6'> = </div>
+    <div class='nums4' id='n7'> - </div>
+    <div class='nums4' id='n8'> - </div>
+    <div class='nums4' id='n9'> = </div>
+    <div class='nums4' id='n10'> - </div>
+    <div class='nums4' id='n11'> - </div>
+    <div class='nums4' id='n12'> = </div>
+
+    <div class='needle' id='hour4'></span> <span> </div>
+    <div  class='needle' id='min4'><span> </span> </div>
+    <div  class='needle' id='secs4'><span> </span></div>
+  </div><div id='clockWrapper5'>
+    <div class='nums5' id='n1'> - </div>
+    <div class='nums5' id='n2'> - </div>
+    <div class='nums5' id='n3'> = </div>
+    <div class='nums5' id='n4'> - </div>
+    <div class='nums5' id='n5'> - </div>
+    <div class='nums5' id='n6'> = </div>
+    <div class='nums5' id='n7'> - </div>
+    <div class='nums5' id='n8'> - </div>
+    <div class='nums5' id='n9'> = </div>
+    <div class='nums5' id='n10'> - </div>
+    <div class='nums5' id='n11'> - </div>
+    <div class='nums5' id='n12'> = </div>
+
+    <div class='needle' id='hour5'></span> <span> </div>
+    <div  class='needle' id='min5'><span> </span> </div>
+    <div  class='needle' id='secs5'><span> </span></div>
+  </div>
+  <div id="sofa">
+  </div>
+  <div id='placeList'> </div>
+
+  <div id="addNew"> 
+      <select id='timeZones'>
+        <option value='-6:00'> US minor islands (-6:00) </option>
+        <option value='-5:00'> Hawaii (-500) </option>
+        <option value='-4:00'> New Zealand (-4:00) </option>
+        <option value= ''>
+      </select>
+      <a href='javascript:addTimeZone()'> Add </a>
+      <a href='javascript:cancelTimeZone()'> Cancel </a>
+  </div>
+</body>
+
+</html>
